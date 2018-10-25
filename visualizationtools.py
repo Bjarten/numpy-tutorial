@@ -5,12 +5,15 @@ import matplotlib.pyplot as plt
 import matplotlib.patheffects as path_effects
 
 def visulize_array(array, name):
+    input_shape = array.shape
     # Check array is 1d
     if array.ndim == 1:
         array = np.array([array])
 
+    row_num = array.shape[0]
     column_num = array.shape[1]
-    fig, ax = plt.subplots(figsize=(column_num*0.8,column_num))
+ 
+    fig, ax = plt.subplots(figsize=(column_num*0.8,row_num))
 
     im = ax.imshow(array, cmap=colormap)
 
@@ -36,7 +39,7 @@ def visulize_array(array, name):
     ax.tick_params(which="minor", bottom=False, left=False)
 
     ax.set_title(name, fontsize=12)
-    plt.xlabel(array.shape,fontsize=12)
+    plt.xlabel(input_shape,fontsize=12)
     #fig.tight_layout()
     plt.show()
 
